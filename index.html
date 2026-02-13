@@ -131,12 +131,22 @@ button{
 </div>
 
 <script>
+const noBtn = document.getElementById("no");
+
 function moveButton(){
-  const button = document.getElementById("no");
   const x = Math.random() * 250 - 125;
   const y = Math.random() * 200 - 100;
-  button.style.transform = `translate(${x}px, ${y}px)`;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
 }
+
+// Para computadora
+noBtn.addEventListener("mouseover", moveButton);
+
+// Para celular
+noBtn.addEventListener("click", function(e){
+  e.preventDefault();
+  moveButton();
+});
 
 function showLetter(){
   document.getElementById("letter").style.display = "block";
@@ -156,6 +166,8 @@ setInterval(function(){
 },1200);
 </script>
 
+
 </body>
 </html>
+
 
