@@ -2,129 +2,116 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>para ti</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-
+<title>Para Izel</title>
 <style>
 body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#f8f6f4;
-    font-family:'Inter', sans-serif;
-    overflow:hidden;
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(135deg, #f8d7e3, #e5d4ff, #ffe8d6);
+  font-family: 'Segoe UI', sans-serif;
+  text-align:center;
 }
 
 .card{
-    text-align:center;
-    background:white;
-    padding:60px 80px;
-    border-radius:20px;
-    box-shadow:0 10px 40px rgba(0,0,0,0.08);
-    position:relative;
+  background: rgba(255,255,255,0.85);
+  padding:40px;
+  border-radius:20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  width:350px;
+  backdrop-filter: blur(10px);
 }
 
 h1{
-    font-family:'Playfair Display', serif;
-    font-size:32px;
-    margin-bottom:20px;
-    color:#2e2e2e;
+  font-weight:500;
+  color:#5e548e;
 }
 
 p{
-    color:#666;
-    font-size:16px;
-    margin-bottom:40px;
-}
-
-.buttons{
-    position:relative;
-    height:60px;
+  color:#6d6875;
+  margin-bottom:30px;
 }
 
 button{
-    padding:12px 28px;
-    border-radius:30px;
-    border:none;
-    font-size:14px;
-    cursor:pointer;
-    transition:0.3s ease;
-    position:absolute;
+  padding:15px 35px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  transition:0.3s;
+  margin:10px;
 }
 
 #yes{
-    background:#d4a5a5;
-    color:white;
-    left:30%;
+  background:#b8c0ff;
+  color:white;
+  font-weight:600;
 }
 
 #yes:hover{
-    background:#c48f8f;
+  transform:scale(1.1);
+  background:#9fa8ff;
 }
 
 #no{
-    background:transparent;
-    border:1px solid #d4a5a5;
-    color:#d4a5a5;
-    left:55%;
+  background:#ffd6e0;
+  color:#6d6875;
+  position:relative;
 }
 
-.heart{
-    position:absolute;
-    font-size:12px;
-    color:#e8bcbc;
-    animation:float 6s linear infinite;
-}
-
-@keyframes float{
-    0%{ transform:translateY(0); opacity:0.6;}
-    100%{ transform:translateY(-100vh); opacity:0;}
+.letter{
+  display:none;
+  margin-top:20px;
+  font-size:16px;
+  line-height:1.6;
+  color:#4a4e69;
 }
 </style>
 </head>
-
 <body>
 
 <div class="card">
-    <h1>¿Quieres ser mi San Valentín?</h1>
-    <p>prometo café, abrazos largos y mirarte como si fueras arte.</p>
+  <h1>¿Quieres ser mi San Valentín?</h1>
+  <p>Prometo que esta vez no hay trampa… bueno, casi.</p>
+  
+  <button id="yes" onclick="showLetter()">Sí</button>
+  <button id="no" onmouseover="moveButton()">No</button>
 
-    <div class="buttons">
-        <button id="yes" onclick="accepted()">sí</button>
-        <button id="no">no</button>
-    </div>
+  <div class="letter" id="letter">
+    <h2>Para Izel</h2>
+    <p>
+      Izel…  
+      Este año a tu lado ha sido el más bonito de mi vida.  
+      Nunca imaginé que aquel día en el gimnasio, entre rutinas y miradas tímidas, iba a conocer a alguien tan especial.
+    </p>
+    <p>
+      Tus ojos… no exagero cuando digo que son los más hermosos que alguien puede tener.  
+      Tienen esa forma de mirarme que me da paz, que me hace sentir en casa.
+    </p>
+    <p>
+      Gracias por este año lleno de risas, apoyo, abrazos y momentos que guardo como tesoros.  
+      No solo quiero que seas mi San Valentín hoy… quiero seguir eligiéndote todos los días.
+    </p>
+    <p>
+      Con todo mi corazón,  
+      Andrik
+    </p>
+  </div>
 </div>
 
 <script>
-const noBtn = document.getElementById("no");
-
-noBtn.addEventListener("mouseover", function(){
-    const x = Math.random() * 200 - 100;
-    const y = Math.random() * 100 - 50;
-    noBtn.style.transform = `translate(${x}px, ${y}px)`;
-});
-
-function accepted(){
-    document.body.innerHTML = `
-    <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#f8f6f4;font-family:'Playfair Display',serif;">
-        <h1 style="font-size:34px;color:#2e2e2e;">sabía que dirías que sí ♡</h1>
-    </div>
-    `;
+function moveButton(){
+  const button = document.getElementById("no");
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 200 - 100;
+  button.style.transform = `translate(${x}px, ${y}px)`;
 }
 
-setInterval(function(){
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "♡";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.top = "100vh";
-    document.body.appendChild(heart);
-
-    setTimeout(()=>{ heart.remove(); },6000);
-},1200);
+function showLetter(){
+  document.getElementById("letter").style.display = "block";
+}
 </script>
 
 </body>
